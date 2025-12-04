@@ -1,0 +1,188 @@
+start: |
+    <b>👋 Olá</b> 
+    
+    Sou um bot que baixa músicas e videoclipes do Apple Music em alta qualidade:
+    • Músicas: AAC 256kbps, ALAC até 24-bit/192kHz, Dolby Atmos ou AAC Binaural 256kbps
+    • Videoclipes: H.264 1080p ou H.265 4K com áudio AAC 256kbps
+    
+    Basta me enviar links do Apple Music (música, videoclipe, álbum ou playlist) e eu te enviarei os arquivos. Até 3 links por mensagem serão processados. Aguarde cada download terminar antes de iniciar outro.
+
+    <b>💲 Assinatura</b>
+    
+    Usuários gratuitos obtêm {free_daily_credits} downloads por dia (apenas músicas, formato AAC). Os assinantes desfrutam de:
+    • Downloads diários ilimitados
+    • Downloads de videoclipes
+    • Qualidade ALAC, Dolby Atmos e AAC Binaural para músicas
+    • Fila de processamento prioritária
+    Para se tornar assinante, veja /membership.
+
+    <b>📝 Importante</b>
+    
+    Pegue os links dos sites suportados listados em /countries usando seu navegador, não o aplicativo.
+
+    Alternativamente, você pode usar a busca inline digitando @{bot_username} seguido de sua consulta em qualquer chat.
+    
+    Para todos os comandos, veja /help.
+
+me: |
+    <b>👤 Suas informações de usuário</b>
+
+    👤 ID do Usuário: <code>{user_id}</code>
+    💲 Créditos Gratuitos: <code>{credits}</code>
+    💲 Data de validade da assinatura: <code>{membership_due_date}</code>
+    🎵 Músicas Baixadas: <code>{songs_downloaded}</code>
+    📽️ Videoclipes Baixados: <code>{music_videos_downloaded}</code>
+    🎤 Upload de Arquivo de Letras Sincronizadas: <code>{synced_lyrics_file_upload}</code>
+    🔊 Codec de Música: <code>{song_codec}</code>
+    ✨ Download em 4K: <code>{fourk_download}</code>
+    🌍 País de Pesquisa Preferido: <code>{search_country}</code>
+
+membership_unactive: "Sem assinatura ativa"
+
+countries: "🌍 Sites suportados para pegar links"
+
+disabled: "Desativado"
+enabled: "Ativado"
+
+donate_unavailable: "❌ Informações de doação não estão disponíveis no momento."
+
+help: |
+    <b>🔧 Comandos</b>
+
+    • Envie links do Apple Music para baixar (música, videoclipe, álbum, playlist)
+    • @{bot_username} <consulta> - Busca inline por músicas, videoclipes e álbuns
+    • /membership - Ver detalhes da assinatura
+    • /lyrics - Alternar upload de arquivo de letras sincronizadas
+    • /fourk - Alternar download em 4K para videoclipes
+    • /songcodec - Alterar codec de música preferido
+    • /searchcountry - Alterar país de pesquisa preferido
+    • /start - Mensagem de boas-vindas
+    • /help - Esta mensagem de ajuda
+    • /me - Suas informações de usuário
+    • /countries - Sites suportados para pegar links
+    • /privacy - Política de privacidade
+    • /clearme - Excluir seus dados de usuário
+
+lyrics: "✅ Upload de arquivo de letras sincronizadas: <b>{status}</b>. Use este comando novamente para alternar."
+
+fourk: "✅ Download em 4K para videoclipes: <b>{status}</b>. Use este comando novamente para alternar."
+
+membership: |
+    <b>💲 Assinatura</b>
+
+    Usuários gratuitos obtêm {free_downloads} downloads por dia (apenas músicas, formato AAC). Os assinantes desfrutam de:
+    • Downloads diários ilimitados
+    • Downloads de videoclipes
+    • Qualidade ALAC, Dolby Atmos e AAC Binaural para músicas
+    • Fila de processamento prioritária
+
+    O download em ALAC/AAC Binaural/Dolby Atmos é restrito ao país {wrapper_country} e pode ser ativado com /songcodec.
+    
+    Sua assinatura ajuda a manter o bot em funcionamento. Siga os passos abaixo para começar.
+
+    <b>🛟 Como Obter Assinatura</b>
+
+    1. Visite nossa página Ko-fi em {kofi_url}.
+    2. Escolha e compre um pacote de assinatura.
+    3. Aguarde instruções por e-mail sobre como ativar. Verifique sua pasta de spam se necessário.
+
+    Observe que os pagamentos feitos com PayPal podem levar algum tempo para enviar instruções de e-mail, pois os pagamentos são processados manualmente.
+
+    Se precisar de ajuda, junte-se ao nosso grupo de suporte (link na bio do bot).
+
+clearme_success: "✅ Seus dados de usuário foram excluídos com sucesso."
+clearme_fail: "❌ Nenhum dado de usuário encontrado para excluir."
+clearme_free: "❌ Você deve esperar seus créditos grátis serem resetados antes de excluir seus dados."
+clearme_paid: "❌ Não é possível excluir dados enquanto houver uma assinatura ativa. Por favor, junte-se ao nosso grupo de suporte (link na bio do bot) para assistência."
+
+under_maintenance: "⚠️ O bot está atualmente em manutenção. Todos os downloads estão temporariamente desativados. Por favor, tente novamente mais tarde. Para atualizações, junte-se ao nosso grupo de suporte (link na bio do bot)."
+
+yes: "Sim"
+no: "Não"
+
+privacy: |
+    <b>🛡️ Política de Privacidade</b>
+
+    Armazenamos apenas seu ID de usuário do Telegram para:
+    • Rastrear sua contagem de downloads
+    • Salvar suas preferências
+    • Enviar anúncios ocasionais
+
+    Nunca compartilhamos ou vendemos seus dados. Exclua-os a qualquer momento com /clearme.
+
+songcodec_membership_required: "❌ Alterar codec de música requer uma assinatura ativa. Veja /membership para detalhes."
+songcodec_choose: "<b>🌍 Escolha seu codec de música preferido</b>"
+songcodec_changed: "✅ Codec de música alterado para {song_codec}."
+
+download_pending: "❌ Você já tem um download em andamento. Por favor, aguarde até que termine."
+download_no_credits: "❌ Você atingiu seu limite diário de downloads. Obtenha uma assinatura para downloads ilimitados com /membership."
+download_music_video_requires_membership: "❌ O download de videoclipes requer uma assinatura. Veja /membership para detalhes."
+download_songcodec_fallback: "❌ Seu codec de música preferido foi alterado para AAC porque sua assinatura expirou. Veja /membership para detalhes."
+download_unsupported_country: |
+    ⚠️ O link "{url}" parece ser de um país não suportado. O download prosseguirá usando o país padrão ({default_country}), mas você pode encontrar problemas. Para melhores resultados, pegue links dos sites suportados listados em /countries.
+download_unsupported_wrapper_country: |
+    ⚠️ O link "{url}" parece ser de um país não suportado para download em ALAC/AAC Binaural/Dolby Atmos. O download prosseguirá usando o país suportado ({supported_country}), mas você pode encontrar problemas. Para melhores resultados ao baixar em ALAC/AAC Binaural/Dolby Atmos, pegue links aqui: {supported_country_url}.
+download_no_url: "❌ Nenhum link válido do Apple Music encontrado. Pegue links dos sites suportados listados em /countries."
+download_unsupported_url: '❌ Tipo de link não suportado "{url}". Apenas links de música, videoclipe, álbum e playlist funcionam.'
+download_url_processing: '⏳ Processando "{url}"...'
+download_url_processing_fail: '❌ Falha ao processar "{url}". Por favor, verifique se o link é válido.'
+download_nothing_found: '❌ Nenhum conteúdo para download encontrado em "{url}". Por favor, verifique se o link é válido.'
+download_start: "⏳ Baixando {total} item(ns)..."
+download_unstremeable: '❌ "{title}" não pode ser transmitido e não pode ser baixado.'
+download_fail: '❌ Falha ao baixar "{title}".'
+download_timeout: '❌ Seu download levou muito tempo para ser concluído e foi cancelado.'
+download_too_large: '❌ "{title}" não pode ser baixado porque excede o tamanho máximo de arquivo permitido para ser enviado no Telegram.'
+download_queue_full: "⏳ Download na fila. Por favor, aguarde sua vez. Esta mensagem será excluída automaticamente quando estiver pronto."
+download_complete: "✅ Download completo!"
+download_complete_but: "✅ Download completo! Tendo problemas? Junte-se ao nosso grupo de suporte (link na bio do bot)."
+
+uncache_start: "⏳ Removendo {total} item(ns) do cache..."
+uncache_fail: '❌ Falha ao remover "{title}" do cache.'
+uncache_success: '✅ "{title}" removido do cache com sucesso.'
+uncache_not_cached: '❌ "{title}" não está em cache.'
+uncache_complete: "✅ Remoção do cache completa!"
+
+lock: "✅ Bloqueio do bot: <code>{status}</code>. Use este comando novamente para alternar."
+
+botstatus: |
+    <b>🤖 Status do Bot</b>
+
+    👤 Total de Usuários: <code>{total_users}</code>
+    👥 Total de Assinantes: <code>{total_member_users}</code>
+    🎵 Total de Músicas Baixadas: <code>{total_songs}</code>
+    📽️ Total de Videoclipes Baixados: <code>{total_music_videos}</code>
+    ⏳ Downloads Atuais: <code>{current_downloads}</code>
+    🔒 Bloqueio do Bot: <code>{bot_lock}</code>
+
+search_changed_auto: "⚠️ Seu país de pesquisa foi alterado para <b>{search_country}</b> devido à indisponibilidade. Altere-o com /searchcountry."
+search_empty_title: "⚠️ Consulta vazia"
+search_empty_description: "Por favor, insira uma consulta de pesquisa."
+search_no_results_title: "⚠️ Nenhum resultado encontrado"
+search_no_results_description: "Nenhum resultado para sua consulta nesta categoria. Tente palavras-chave diferentes."
+search_unknown_year: "Ano desconhecido"
+search_result_media: "{artist} • {duration}"
+search_result_collection: "{artist} • {year} • {track_count} faixas"
+search_error_title: "⚠️ Erro"
+search_error_description: "Ocorreu um erro durante a pesquisa. Por favor, tente novamente mais tarde."
+search_songs_header: "🎵 Músicas"
+search_music_videos_header: "📽️ Videoclipes"
+search_albums_header: "📀 Álbuns"
+
+search_country_choose: "<b>🌍 Escolha seu país de pesquisa preferido</b>"
+search_country_changed: "✅ País de pesquisa alterado para <b>{search_country}</b>."
+
+activate_no_code: "❌ Por favor, forneça um código de ativação. Uso: /activate <código>"
+activate_invalid_code: "❌ Código de ativação inválido."
+activate_success: "✅ Ativação bem-sucedida! Sua assinatura é válida até {membership_due_date}."
+
+givecredits_invalid_arguments: "❌ Argumentos inválidos. Uso: /givecredits [user_id] [credits]"
+givecredits_user_not_found: "❌ Usuário com ID <code>{user_id}</code> não encontrado."
+givecredits_success: "✅ {credits} crédito(s) foram dados com sucesso ao usuário <code>{user_id}</code>."
+
+givemembershipdays_invalid_arguments: "❌ Argumentos inválidos. Uso: /givemembership [user_id] [days]"
+givemembershipdays_user_not_found: "❌ Usuário com ID <code>{user_id}</code> não encontrado."
+givemembershipdays_success: "✅ Associação de {days} dia(s) concedida com sucesso ao usuário <code>{user_id}</code>."
+
+giveaway_invalid_arguments: "❌ Argumentos inválidos. Uso: /giveaway [amount] [months]"
+giveaway_fail: "❌ Falha ao gerar códigos de sorteio. Por favor, tente novamente mais tarde."
+giveaway_success: "✅ Abaixo estão {amount} código(s) de sorteio para assinatura de {months} meses:\n{codes}"

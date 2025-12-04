@@ -1,0 +1,187 @@
+start: |
+    <b>👋 Hello</b> 
+    
+    I'm a bot that downloads songs and music videos from Apple Music in high quality:
+    • Songs: AAC 256kbps, ALAC up to 24-bit/192kHz, Dolby Atmos, or Binaural AAC 256kbps
+    • Music Videos: H.264 1080p or H.265 4K with AAC 256kbps audio
+    
+    Just send me Apple Music links (song, music video, album, or playlist) and I'll send you the files. Up to 3 links per message will be processed. Once a download starts, wait until it finishes before starting another.
+
+    <b>💲 Membership</b>
+    
+    Free users get {free_daily_credits} downloads per day (songs only, AAC format). Members enjoy:
+    • Unlimited daily downloads
+    • Music video downloads
+    • ALAC, Dolby Atmos and Binaural AAC quality for songs
+    • Priority processing queue
+    To become a member, see /membership.
+
+    <b>📝 Important</b>
+    
+    Grab links from the supported websites listed in /countries using your browser, not the app.
+
+    Alternatively, you can use the inline search by typing @{bot_username} followed by your query in any chat.
+    
+    For all commands, see /help.
+
+me: |
+    <b>👤 Your user information</b>
+
+    👤 User ID: <code>{user_id}</code>
+    💲 Free Credits: <code>{credits}</code>
+    💲 Membership due date: <code>{membership_due_date}</code>
+    🎵 Songs Downloaded: <code>{songs_downloaded}</code>
+    📽️ Music Videos Downloaded: <code>{music_videos_downloaded}</code>
+    🎤 Synced Lyrics File Upload: <code>{synced_lyrics_file_upload}</code>
+    🔊 Song Codec: <code>{song_codec}</code>
+    ✨ 4K Download: <code>{fourk_download}</code>
+    🌍 Preferred Search Country: <code>{search_country}</code>
+
+membership_unactive: "No active membership"
+
+countries: "🌍 Supported websites for grabbing links"
+
+disabled: "Disabled"
+enabled: "Enabled"
+
+help: |
+    <b>🔧 Commands</b>
+
+    • Send Apple Music links to download (song, music video, album, playlist)
+    • @{bot_username} <query> - Inline search for songs, music videos, and albums
+    • /membership - View membership details
+    • /lyrics - Toggle synced lyrics file upload
+    • /fourk - Toggle 4K download for music videos
+    • /songcodec - Change preferred song codec
+    • /searchcountry - Change preferred search country
+    • /start - Welcome message
+    • /help - This help message
+    • /me - Your user information
+    • /countries - Supported websites for grabbing links
+    • /privacy - Privacy policy
+    • /clearme - Delete your user data
+
+lyrics: "✅ Synced lyrics file upload: <b>{status}</b>. Use this command again to toggle."
+
+fourk: "✅ 4K download for music videos: <b>{status}</b>. Use this command again to toggle."
+
+membership: |
+    <b>💲 Membership</b>
+
+    Free users get {free_downloads} downloads per day (songs only, AAC format). Members enjoy:
+    • Unlimited daily downloads
+    • Music video downloads
+    • ALAC, Binaural AAC, and Dolby Atmos quality for songs
+    • Priority processing queue
+
+    ALAC/Binaural AAC/Dolby Atmos download is restricted to the country {wrapper_country} and can be choosen via /songcodec.
+    
+    Your membership helps support the bot and keep it running. Follow the steps below to get started.
+
+    <b>🛟 How to Get Membership</b>
+
+    1. Visit our Ko-fi shop page at {kofi_url}.
+    2. Choose and buy a membership package.
+    3. Wait for further instructions via email on how to activate. Check your spam folder if needed.
+
+    Note that payments made with PayPal may take some time to send email instructions, as payments are processed manually.
+
+    If you need help, join our support group (link in bot bio).
+
+clearme_success: "✅ Your user data has been cleared successfully."
+clearme_fail: "❌ No user data found to clear."
+clearme_free: "❌ You must wait your free downloads to reset before clearing your data."
+clearme_paid: "❌ Cannot clear data while having an active membership. Please join our support group (link in bot bio) for assistance."
+
+under_maintenance: "⚠️ The bot is currently under maintenance. All downloads are temporarily disabled. Please try again later. For updates, join our support group (link in bot bio)."
+
+yes: "Yes"
+no: "No"
+
+privacy: |
+    <b>🛡️ Privacy Policy</b>
+
+    We only store your Telegram user ID to:
+    • Track your download count
+    • Save your preferences
+    • Send occasional announcements
+
+    We never share or sell your data. Delete it anytime with /clearme.
+
+songcodec_membership_required: "❌ Changing song codec requires an active membership. See /membership for details."
+songcodec_choose: "<b>🌍 Choose your preferred song codec</b>"
+songcodec_changed: "✅ Song codec changed to {song_codec}."
+
+download_pending: "❌ You already have an ongoing download. Please wait for it to finish."
+download_no_credits: "❌ You've reached your daily download limit. Get a membership for unlimited downloads with /membership."
+download_music_video_requires_membership: "❌ Downloading music videos requires a membership. See /membership for details."
+download_songcodec_fallback: "❌ You preferred song codec has changed to AAC because your membership expired. See /membership for details."
+download_unsupported_country: |
+    ⚠️ The link "{url}" appears to be from an unsupported country. The download will proceed using the default country ({default_country}), but you may encounter issues. For best results, grab links from the supported websites listed in /countries.
+download_unsupported_wrapper_country: |
+    ⚠️ The link "{url}" appears to be from an unsupported country for downloading in ALAC/AAC Binaural/Dolby Atmos. The download will proceed using the supported country ({supported_country}), but you may encounter issues. For best results when downloading in ALAC/AAC Binaural/Dolby Atmos, grab links from here: {supported_country_url}.
+download_no_url: "❌ No valid Apple Music link found. Grab links from the supported websites listed in /countries."
+download_unsupported_url: '❌ Unsupported link type "{url}". Only song, music video, album, and playlist links work.'
+download_url_processing: '⏳ Processing "{url}"...'
+download_url_processing_fail: '❌ Failed to process "{url}". Please verify the link is valid.'
+download_nothing_found: '❌ No downloadable content found in "{url}". Please verify the link is valid.'
+download_start: "⏳ Downloading {total} item(s)..."
+download_unstremeable: '❌ "{title}" is unstreamable and cannot be downloaded.'
+download_format_unavailable: '❌ "{title}" is not available in your preferred codec. Change your song codec with /songcodec or try again later.'
+download_fail: '❌ Failed to download "{title}".'
+download_timeout: '❌ Your download took too long to complete and got cancelled.'
+download_too_large: '❌ "{title}" cannot be downloaded because it exceeds the maximum file size limit to be uploaded in Telegram.'
+download_queue_full: "⏳ Download queued. Please wait your turn. This message will auto-delete when ready."
+download_complete: "✅ Download complete!"
+download_complete_but: "✅ Download complete! Having issues? Join our support group (link in bot bio)."
+
+uncache_start: "⏳ Uncaching {total} item(s)..."
+uncache_fail: '❌ Failed to uncache "{title}".'
+uncache_success: '✅ "{title}" uncached successfully.'
+uncache_not_cached: '❌ "{title}" is not in cache.'
+uncache_complete: "✅ Uncache complete!"
+
+lock: "✅ Bot lock: <code>{status}</code>. Use this command again to toggle."
+
+botstatus: |
+    <b>🤖 Bot Status</b>
+
+    👤 Total Users: <code>{total_users}</code>
+    👥 Total Members: <code>{total_member_users}</code>
+    🎵 Total Songs Downloaded: <code>{total_songs}</code>
+    📽️ Total Music Videos Downloaded: <code>{total_music_videos}</code>
+    ⏳ Current Downloads: <code>{current_downloads}</code>
+    🔒 Bot Lock: <code>{bot_lock}</code>
+
+search_changed_auto: "⚠️ Your search country was changed to <b>{search_country}</b> due to unavailability. Change it with /searchcountry."
+search_empty_title: "⚠️ Empty query"
+search_empty_description: "Please enter a search query."
+search_no_results_title: "⚠️ No results found"
+search_no_results_description: "No results for your query in this category. Try different keywords."
+search_unknown_year: "Unknown year"
+search_result_media: "{artist} • {duration}"
+search_result_collection: "{artist} • {year} • {track_count} tracks"
+search_error_title: "⚠️ Error"
+search_error_description: "An error occurred while searching. Please try again later."
+search_songs_header: "🎵 Songs"
+search_music_videos_header: "📽️ Music Videos"
+search_albums_header: "📀 Albums"
+
+search_country_choose: "<b>🌍 Choose your preferred search country</b>"
+search_country_changed: "✅ Search country changed to {search_country}."
+
+activate_no_code: "❌ Please provide an activation code. Usage: /activate [code]"
+activate_invalid_code: "❌ Invalid activation code."
+activate_success: "✅ Activation successful! Your membership is now active until {membership_due_date}."
+
+givecredits_invalid_arguments: "❌ Invalid arguments. Usage: /givecredits [user_id] [credits]"
+givecredits_user_not_found: "❌ User with ID <code>{user_id}</code> not found."
+givecredits_success: "✅ Successfully gave {credits} credit(s) to user <code>{user_id}</code>."
+
+givemembershipdays_invalid_arguments: "❌ Invalid arguments. Usage: /givemembership [user_id] [days]"
+givemembershipdays_user_not_found: "❌ User with ID <code>{user_id}</code> not found."
+givemembershipdays_success: "✅ Successfully added {days} day(s) of membership to user <code>{user_id}</code>."
+
+giveaway_invalid_arguments: "❌ Invalid arguments. Usage: /giveaway [amount] [months]"
+giveaway_fail: "❌ Failed to generate giveaway codes. Please try again later."
+giveaway_success: "✅ Bellow are {amount} giveaway code(s) for {months}-month membership:\n{codes}"

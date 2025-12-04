@@ -1,0 +1,189 @@
+start: |
+    <b>👋 こんにちは</b> 
+    
+    Apple Musicから高品質で楽曲とミュージックビデオをダウンロードするボットです：
+    • 楽曲：AAC 256kbps、ALAC最大24-bit/192kHz、Dolby AtmosまたはBinaural AAC 256kbps
+    • ミュージックビデオ：H.264 1080pまたはH.265 4K（AAC 256kbpsオーディオ）
+    
+    Apple Musicのリンク（楽曲、ミュージックビデオ、アルバム、プレイリスト）を送信するだけで、ファイルをお送りします。1つのメッセージで最大3つのリンクが処理されます。ダウンロードが開始されたら、終了するまで待ってから次のダウンロードを開始してください。
+
+    <b>💲 メンバーシップ</b>
+    
+    無料ユーザーは1日{free_daily_credits}回のダウンロードが可能です（楽曲のみ、AAC形式）。メンバーは以下を享受できます：
+    • 無制限の日次ダウンロード
+    • ミュージックビデオのダウンロード
+    • 楽曲のALAC、Binaural AAC、およびDolby Atmos品質
+    • 優先処理キュー
+    メンバーになるには、/membershipを参照してください。
+
+    <b>📝 重要</b>
+    
+    /countriesに記載されているサポート対象のウェブサイトから、アプリではなくブラウザを使用してリンクを取得してください。
+
+    または、任意のチャットで@{bot_username}に続けてクエリを入力することで、インライン検索を使用できます。
+    
+    すべてのコマンドについては、/helpを参照してください。
+
+me: |
+    <b>👤 ユーザー情報</b>
+
+    👤 ユーザーID：<code>{user_id}</code>
+    💲 無料クレジット：<code>{credits}</code>
+    💲 メンバーシップ有効期限：<code>{membership_due_date}</code>
+    🎵 ダウンロードした楽曲数：<code>{songs_downloaded}</code>
+    📽️ ダウンロードしたミュージックビデオ数：<code>{music_videos_downloaded}</code>
+    🎤 同期歌詞ファイルのアップロード：<code>{synced_lyrics_file_upload}</code>
+    🔊 楽曲コーデック：<code>{song_codec}</code>
+    ✨ 4Kダウンロード：<code>{fourk_download}</code>
+    🌍 優先検索国：<code>{search_country}</code>
+
+membership_unactive: "アクティブなメンバーシップなし"
+
+countries: "🌍 リンク取得に対応しているウェブサイト"
+
+disabled: "無効"
+enabled: "有効"
+
+donate_unavailable: "❌ 寄付情報は現在利用できません。"
+
+help: |
+    <b>🔧 コマンド</b>
+
+    • Apple Musicのリンクを送信してダウンロード（楽曲、ミュージックビデオ、アルバム、プレイリスト）
+    • @{bot_username} <クエリ> - 楽曲、ミュージックビデオ、アルバムのインライン検索
+    • /membership - メンバーシップの詳細を表示
+    • /lyrics - 同期歌詞ファイルのアップロードを切り替え
+    • /fourk - ミュージックビデオの4Kダウンロードを切り替え
+    • /songcodec - 優先楽曲コーデックを変更
+    • /searchcountry - 優先検索国を変更
+    • /start - ようこそメッセージ
+    • /help - このヘルプメッセージ
+    • /me - ユーザー情報
+    • /countries - リンク取得に対応しているウェブサイト
+    • /privacy - プライバシーポリシー
+    • /clearme - ユーザーデータを削除
+
+lyrics: "✅ 同期歌詞ファイルのアップロード：<b>{status}</b>。このコマンドを再度使用して切り替えます。"
+
+fourk: "✅ ミュージックビデオの4Kダウンロード：<b>{status}</b>。このコマンドを再度使用して切り替えます。"
+
+membership: |
+    <b>💲 メンバーシップ</b>
+
+    無料ユーザーは1日{free_downloads}回のダウンロードが可能です（楽曲のみ、AAC形式）。メンバーは以下を享受できます：
+    • 無制限の日次ダウンロード
+    • ミュージックビデオのダウンロード
+    • 楽曲のALAC、Binaural AAC、およびDolby Atmos品質
+    • 優先処理キュー
+
+    ALAC/AAC Binaural/Dolby Atmosダウンロードは国{wrapper_country}に限定されており、/songcodecで有効にできます。
+    
+    メンバーシップはボットの運営をサポートし、稼働を続けるのに役立ちます。以下の手順に従ってメンバーになってください。
+
+    <b>🛟 メンバーシップの取得方法</b>
+
+    1. {kofi_url}のKo-fiショップページにアクセスしてください。
+    2. メンバーシップパッケージを選択して購入してください。
+    3. アクティベーション方法についてはメールでご案内します。必要に応じて迷惑メールフォルダを確認してください。
+
+    PayPalで行われた支払いは、支払いが手動で処理されるため、メール指示の送信に時間がかかる場合があることに注意してください。
+
+    サポートが必要な場合は、サポートグループ（ボットのプロフィールリンク）にご参加ください。
+
+clearme_success: "✅ ユーザーデータが正常に削除されました。"
+clearme_fail: "❌ 削除するユーザーデータが見つかりません。"
+clearme_free: "❌ 無料クレジットがリセットされるまでデータを削除できません。"
+clearme_paid: "❌ アクティブなメンバーシップがある間はデータを削除できません。サポートが必要な場合は、サポートグループ（ボットのプロフィールリンク）にご参加ください。"
+
+under_maintenance: "⚠️ ボットは現在メンテナンス中です。すべてのダウンロードは一時的に無効になっています。後でもう一度お試しください。更新情報については、サポートグループにご参加ください（ボットのプロフィールにリンクがあります）。"
+
+yes: "はい"
+no: "いいえ"
+
+privacy: |
+    <b>🛡️ プライバシーポリシー</b>
+
+    TelegramのユーザーIDのみを保存します：
+    • ダウンロード数を追跡
+    • 設定を保存
+    • 時々お知らせを送信
+
+    データを共有または販売することはありません。/clearmeでいつでも削除できます。
+
+
+songcodec_membership_required: "❌ 楽曲コーデックの変更にはアクティブなメンバーシップが必要です。/membershipで詳細を確認してください。"
+songcodec_choose: "<b>🌍 優先楽曲コーデックを選択してください</b>"
+songcodec_changed: "✅ 楽曲コーデックが{song_codec}に変更されました。"
+
+download_pending: "❌ すでにダウンロードが進行中です。終了するまでお待ちください。"
+download_no_credits: "❌ 1日のダウンロード制限に達しました。/membershipで無制限ダウンロードのメンバーシップを取得してください。"
+download_music_video_requires_membership: "❌ ミュージックビデオのダウンロードにはメンバーシップが必要です。/membershipで詳細を確認してください。"
+download_songcodec_fallback: "❌ メンバーシップの期限が切れたため、優先楽曲コーデックはAACに変更されました。/membershipで詳細を確認してください。"
+download_unsupported_country: |
+    ⚠️ リンク「{url}」は対応していない国からのもののようです。デフォルトの国（{default_country}）を使用してダウンロードを続行しますが、問題が発生する可能性があります。最良の結果を得るには、/countriesに記載されているサポート対象のウェブサイトからリンクを取得してください。
+download_unsupported_wrapper_country: |
+    ⚠️ リンク「{url}」はALAC/AAC Binaural/Dolby Atmosでのダウンロードに対応していない国からのもののようです。サポートされている国（{supported_country}）を使用してダウンロードを続行しますが、問題が発生する可能性があります。ALAC/AAC Binaural/Dolby Atmosでのダウンロードの最良の結果を得るには、こちらからリンクを取得してください: {supported_country_url}
+download_no_url: "❌ 有効なApple Musicリンクが見つかりません。/countriesに記載されているサポート対象のウェブサイトからリンクを取得してください。"
+download_unsupported_url: '❌ 非対応のリンクタイプ「{url}」です。楽曲、ミュージックビデオ、アルバム、プレイリストのリンクのみが機能します。'
+download_url_processing: '⏳ 「{url}」を処理中...'
+download_url_processing_fail: '❌ 「{url}」の処理に失敗しました。リンクが有効であることを確認してください。'
+download_nothing_found: '❌ 「{url}」にダウンロード可能なコンテンツが見つかりません。リンクが有効であることを確認してください。'
+download_start: "⏳ {total}件のアイテムをダウンロード中..."
+download_unstremeable: '❌ 「{title}」はストリーミングできないため、ダウンロードできません。'
+download_fail: '❌ 「{title}」のダウンロードに失敗しました。'
+download_timeout: '❌ ダウンロードが完了するのに長すぎる時間がかかり、キャンセルされました。'
+download_too_large: '❌ 「{title}」はTelegramにアップロードするために許可される最大ファイルサイズ制限を超えているため、ダウンロードできません。'
+download_queue_full: "⏳ ダウンロードがキューに入りました。順番をお待ちください。準備ができたら、このメッセージは自動的に削除されます。"
+download_complete: "✅ ダウンロード完了！"
+download_complete_but: "✅ ダウンロード完了！問題がありますか？サポートグループにご参加ください（ボットのプロフィールにリンクがあります）。"
+
+uncache_start: "⏳ {total}件のアイテムのキャッシュを削除中..."
+uncache_fail: '❌ 「{title}」のキャッシュ削除に失敗しました。'
+uncache_success: '✅ 「{title}」のキャッシュが正常に削除されました。'
+uncache_not_cached: '❌ 「{title}」はキャッシュされていません。'
+uncache_complete: "✅ キャッシュ削除完了！"
+
+lock: "✅ ボットロック：<code>{status}</code>。このコマンドを再度使用して切り替えます。"
+
+botstatus: |
+    <b>🤖 ボットステータス</b>
+
+    👤 総ユーザー数：<code>{total_users}</code>
+    👥 総メンバー数：<code>{total_member_users}</code>
+    🎵 総ダウンロード楽曲数：<code>{total_songs}</code>
+    📽️ 総ダウンロードミュージックビデオ数：<code>{total_music_videos}</code>
+    ⏳ 現在のダウンロード数：<code>{current_downloads}</code>
+    🔒 ボットロック：<code>{bot_lock}</code>
+
+search_changed_auto: "⚠️ 検索国が利用不可のため、<b>{search_country}</b>に変更されました。/searchcountryで変更できます。"
+search_empty_title: "⚠️ 空のクエリ"
+search_empty_description: "検索クエリを入力してください。"
+search_no_results_title: "⚠️ 結果が見つかりません"
+search_no_results_description: "このカテゴリでクエリの結果が見つかりません。別のキーワードをお試しください。"
+search_unknown_year: "不明な年"
+search_result_media: "{artist} • {duration}"
+search_result_collection: "{artist} • {year} • {track_count}トラック"
+search_error_title: "⚠️ エラー"
+search_error_description: "検索中にエラーが発生しました。後でもう一度お試しください。"
+search_songs_header: "🎵 楽曲"
+search_music_videos_header: "📽️ ミュージックビデオ"
+search_albums_header: "📀 アルバム"
+
+search_country_choose: "<b>🌍 優先検索国を選択してください</b>"
+search_country_changed: "✅ 検索国が<b>{search_country}</b>に変更されました。"
+
+activate_no_code: "❌ アクティベーションコードを入力してください。使用例: /activate <コード>"
+activate_invalid_code: "❌ 無効なアクティベーションコードです。"
+activate_success: "✅ アクティベーション成功！メンバーシップは{membership_due_date}まで有効です。"
+
+givecredits_invalid_arguments: "❌ 引数が無効です。使用例: /givecredits [user_id] [credits]"
+givecredits_user_not_found: "❌ ユーザーID <code>{user_id}</code> のユーザーが見つかりません。"
+givecredits_success: "✅ ユーザー <code>{user_id}</code> に {credits} クレジットを正常に付与しました。"
+
+givemembershipdays_invalid_arguments: "❌ 引数が無効です。使用例: /givemembership [user_id] [days]"
+givemembershipdays_user_not_found: "❌ ユーザーID <code>{user_id}</code> が見つかりません。"
+givemembershipdays_success: "✅ ユーザー <code>{user_id}</code> に {days} 日間のメンバーシップを正常に付与しました。"
+
+giveaway_invalid_arguments: "❌ 引数が無効です。使用例: /giveaway [months] [days]"
+giveaway_fail: "❌ ギブアウェイコードの生成に失敗しました。後でもう一度お試しください。"
+giveaway_success: "✅ 以下は {months} 日間のメンバーシップ用 {amount} 個のギブアウェイコードです：\n{codes}:"
