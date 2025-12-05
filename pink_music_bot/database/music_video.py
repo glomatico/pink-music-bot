@@ -1,7 +1,7 @@
 from contextlib import AbstractAsyncContextManager
 from typing import Callable
 
-from sqlalchemy import Boolean, Column, Integer, String, delete, select
+from sqlalchemy import Boolean, Column, Integer, String, delete, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from .base import Base
@@ -64,6 +64,5 @@ class MusicVideoDatabase:
 
     async def count(self) -> int:
         async with self.get_session() as session:
-            result = await session.execute(select(MusicVideo))
-            music_videos = result.scalars().all()
-            return len(music_videos)
+            result = await session.execute(select(func.count()).select_from(MusicVideo))
+            return result.scalar_one()

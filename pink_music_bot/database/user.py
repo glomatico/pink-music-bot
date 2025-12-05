@@ -12,6 +12,7 @@ from sqlalchemy import (
     Integer,
     String,
     delete,
+    func,
     select,
     update,
 )
@@ -119,9 +120,8 @@ class UserDatabase:
 
     async def count(self) -> int:
         async with self.get_session() as session:
-            result = await session.execute(select(User))
-            users = result.scalars().all()
-            return len(users)
+            result = await session.execute(select(func.count()).select_from(User))
+            return result.scalar_one()
 
     async def increment_songs_downloaded(self, user_id: int) -> None:
         async with self.get_session() as session:

@@ -2,7 +2,7 @@ from contextlib import AbstractAsyncContextManager
 from typing import Callable
 
 from gamdl.interface import SongCodec
-from sqlalchemy import Column, Enum, Integer, String, delete, select
+from sqlalchemy import Column, Enum, Integer, String, delete, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from .base import Base
@@ -60,6 +60,5 @@ class SongDatabase:
 
     async def count(self) -> int:
         async with self.get_session() as session:
-            result = await session.execute(select(Song))
-            songs = result.scalars().all()
-            return len(songs)
+            result = await session.execute(select(func.count()).select_from(Song))
+            return result.scalar_one()
