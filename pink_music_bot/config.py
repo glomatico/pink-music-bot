@@ -44,7 +44,7 @@ kofi_verification_token = os.environ.get(
 )
 kofi_shop_id = os.environ.get("KOFI_SHOP_ID", "abcde12345")
 kofi_url = os.environ.get("KOFI_URL", "example.com")
-download_timeout = int(os.environ.get("DOWNLOAD_TIMEOUT", 30))
+download_timeout = int(os.environ.get("DOWNLOAD_TIMEOUT", 300))
 song_cache_chat_id = int(os.environ["SONG_CACHE_CHAT_ID"])
 music_video_cache_id = int(
     os.environ.get("MUSIC_VIDEO_CACHE_CHAT_ID", song_cache_chat_id)
