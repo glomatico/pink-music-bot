@@ -19,7 +19,7 @@ async def message(bot: PinkMusicBot, message: Message):
     total_member_users = await bot.db.user.count_members()
     total_songs = await bot.db.song.count()
     total_music_videos = await bot.db.music_video.count()
-    current_downloads = 0  # TODO: implement user_locker
+    current_downloads = len(bot.user_locker.users)
     bot_lock = Path("lock").exists()
 
     await message.reply(
