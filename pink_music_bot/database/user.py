@@ -171,7 +171,12 @@ class UserDatabase:
                 .values(credits=User.credits - credits)
             )
 
-    async def add_membership_days(self, user_id: int, days: int) -> datetime.datetime:
+    async def add_membership_days(
+        self,
+        user_id: int,
+        days: int,
+        email: str | None = None,
+    ) -> datetime.datetime:
         async with self.get_session() as session:
             result = await session.execute(
                 select(User.membership_due_date).where(User.id == user_id)
@@ -190,19 +195,18 @@ class UserDatabase:
                 .values(membership_due_date=new_due_date)
             )
 
-            return new_due_date
+            if email is not None:
+                await session.execute(
+                    update(User)
+                    .where(User.email == email)
+                    .where(User.id != user_id)
+                    .values(email=None)
+                )
+                await session.execute(
+                    update(User).where(User.id == user_id).values(email=email)
+                )
 
-    async def update_email(self, user_id: int, email: str) -> None:
-        async with self.get_session() as session:
-            await session.execute(
-                update(User)
-                .where(User.email == email)
-                .where(User.id != user_id)
-                .values(email=None)
-            )
-            await session.execute(
-                update(User).where(User.id == user_id).values(email=email)
-            )
+            return new_due_date
 
     async def count_members(self) -> int:
         async with self.get_session() as session:
