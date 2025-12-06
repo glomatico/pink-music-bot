@@ -289,6 +289,7 @@ async def _message(bot: PinkMusicBot, message: Message, lp):
                 lp("download_nothing_found").format(url=url),
                 disable_web_page_preview=True,
             )
+            return
 
         await url_message.edit(
             lp("download_start").format(total=len(url_download_queue))
