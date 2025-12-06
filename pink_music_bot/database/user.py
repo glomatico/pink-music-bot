@@ -25,6 +25,7 @@ class User(Base):
     __tablename__ = "user"
 
     id = Column(BigInteger, primary_key=True)
+    email = Column(String(255), unique=True, nullable=True, default=None)
     songs_downloaded = Column(Integer, default=0, nullable=False)
     music_videos_downloaded = Column(Integer, default=0, nullable=False)
     fourk_download = Column(Boolean, default=False, nullable=False)
@@ -56,6 +57,11 @@ class UserDatabase:
     async def get(self, user_id: int) -> User | None:
         async with self.get_session() as session:
             result = await session.execute(select(User).where(User.id == user_id))
+            return result.scalar_one_or_none()
+
+    async def get_by_email(self, email: str) -> User | None:
+        async with self.get_session() as session:
+            result = await session.execute(select(User).where(User.email == email))
             return result.scalar_one_or_none()
 
     async def add_if_not_exists(self, user_id: int) -> User:
@@ -186,6 +192,18 @@ class UserDatabase:
 
             return new_due_date
 
+    async def update_email(self, user_id: int, email: str) -> None:
+        async with self.get_session() as session:
+            await session.execute(
+                update(User)
+                .where(User.email == email)
+                .where(User.id != user_id)
+                .values(email=None)
+            )
+            await session.execute(
+                update(User).where(User.id == user_id).values(email=email)
+            )
+
     async def count_members(self) -> int:
         async with self.get_session() as session:
             now = datetime.datetime.now()
@@ -194,3 +212,9 @@ class UserDatabase:
             )
             members = result.scalars().all()
             return len(members)
+
+    async def revoke_membership(self, user_id: int) -> None:
+        async with self.get_session() as session:
+            await session.execute(
+                update(User).where(User.id == user_id).values(membership_due_date=None)
+            )

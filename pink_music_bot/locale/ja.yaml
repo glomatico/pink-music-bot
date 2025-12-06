@@ -187,3 +187,8 @@ givemembershipdays_success: "✅ ユーザー <code>{user_id}</code> に {days} 
 giveaway_invalid_arguments: "❌ 引数が無効です。使用例: /giveaway [months] [days]"
 giveaway_fail: "❌ ギブアウェイコードの生成に失敗しました。後でもう一度お試しください。"
 giveaway_success: "✅ 以下は {months} 日間のメンバーシップ用 {amount} 個のギブアウェイコードです：\n{codes}:"
+
+revokemembership_invalid_arguments: "❌ 引数が無効です。使用例: /revokemembership [user_id | email]"
+revokemembership_user_not_found: "❌ ユーザーID/メール <code>{user_id}</code> が見つかりません。"
+revokemembership_user_no_active_membership: "❌ ユーザーID <code>{user_id}</code> にはアクティブなメンバーシップがありません。"
+revokemembership_success: "✅ ユーザー <code>{user_id}</code> のメンバーシップを正常に取り消しました。"

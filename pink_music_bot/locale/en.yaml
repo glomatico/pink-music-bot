@@ -185,3 +185,8 @@ givemembershipdays_success: "✅ Successfully added {days} day(s) of membership 
 giveaway_invalid_arguments: "❌ Invalid arguments. Usage: /giveaway [amount] [months]"
 giveaway_fail: "❌ Failed to generate giveaway codes. Please try again later."
 giveaway_success: "✅ Bellow are {amount} giveaway code(s) for {months}-month membership:\n{codes}"
+
+revokemembership_invalid_arguments: "❌ Invalid arguments. Usage: /revokemembership [user_id | email]"
+revokemembership_user_not_found: "❌ User with ID/Email <code>{user_id}</code> not found."
+revokemembership_user_no_active_membership: "❌ User with ID <code>{user_id}</code> does not have an active membership."
+revokemembership_success: "✅ Successfully revoked membership for user <code>{user_id}</code>."

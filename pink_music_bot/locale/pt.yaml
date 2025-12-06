@@ -186,3 +186,8 @@ givemembershipdays_success: "✅ Associação de {days} dia(s) concedida com suc
 giveaway_invalid_arguments: "❌ Argumentos inválidos. Uso: /giveaway [amount] [months]"
 giveaway_fail: "❌ Falha ao gerar códigos de sorteio. Por favor, tente novamente mais tarde."
 giveaway_success: "✅ Abaixo estão {amount} código(s) de sorteio para assinatura de {months} meses:\n{codes}"
+
+revokemembership_invalid_arguments: "❌ Argumentos inválidos. Uso: /revokemembership [user_id | email]"
+revokemembership_user_not_found: "❌ Usuário com ID/Email <code>{user_id}</code> não encontrado."
+revokemembership_user_no_active_membership: "❌ Usuário com ID <code>{user_id}</code> não possui assinatura ativa."
+revokemembership_success: "✅ Assinatura revogada com sucesso para o usuário <code>{user_id}</code>."
