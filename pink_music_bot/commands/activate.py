@@ -1,3 +1,4 @@
+import logging
 from dataclasses import dataclass
 
 import httpx
@@ -5,6 +6,8 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from ..bot import PinkMusicBot
+
+logger = logging.getLogger(__name__)
 
 
 @dataclass
@@ -21,7 +24,7 @@ async def validate_activation_code(
     async with httpx.AsyncClient() as http_client:
         try:
             response = await http_client.post(
-                f"{credit_api_url}/reedem",
+                f"{credit_api_url}/redeem",
                 json={
                     "credit_id": credit_id,
                     "verification_token": kofi_verification_token,
@@ -34,6 +37,7 @@ async def validate_activation_code(
                 email=data["email"],
             )
         except Exception:
+            logger.exception(f"Failed to validate activation code: {credit_id}")
             return None
 
 
@@ -59,7 +63,7 @@ async def message(bot: PinkMusicBot, message: Message):
         return
 
     user = await bot.db.user.get(message.from_user.id)
-    membership_due_data = await bot.db.user.add_membership_days(
+    membership_due_date = await bot.db.user.add_membership_days(
         user.id,
         activation_result.days,
         activation_result.email if activation_result.email != "giveaway" else None,
@@ -67,7 +71,7 @@ async def message(bot: PinkMusicBot, message: Message):
 
     await message.reply(
         lp("activate_success").format(
-            membership_due_date=membership_due_data.strftime("%Y-%m-%d"),
+            membership_due_date=membership_due_date.strftime("%Y-%m-%d"),
         ),
         disable_web_page_preview=True,
     )
