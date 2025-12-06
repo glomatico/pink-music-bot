@@ -19,6 +19,11 @@ class PrioritySemaphore:
         self._queue: asyncio.PriorityQueue[PriorityItem] = asyncio.PriorityQueue()
         self._lock = asyncio.Lock()
 
+    @property
+    async def is_full(self) -> bool:
+        async with self._lock:
+            return self._count >= self._limit
+
     @asynccontextmanager
     async def acquire(self, priority: int = 0):
         async with self._lock:
