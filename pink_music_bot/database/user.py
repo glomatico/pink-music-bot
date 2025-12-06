@@ -40,7 +40,8 @@ class User(Base):
     credits = Column(Integer, default=0, nullable=False)
     membership_due_date = Column(DateTime, default=None, nullable=True)
 
-    def is_membership_active(self) -> bool:
+    @property
+    def active_membership(self) -> bool:
         if self.membership_due_date is None:
             return False
 

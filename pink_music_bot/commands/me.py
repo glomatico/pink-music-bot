@@ -20,7 +20,7 @@ async def message(bot: PinkMusicBot, message: Message):
             credits=user.credits,
             membership_due_date=(
                 user.membership_due_date.strftime("%Y-%m-%d")
-                if user.is_membership_active()
+                if user.active_membership
                 else lp("membership_unactive")
             ),
             songs_downloaded=user.songs_downloaded,

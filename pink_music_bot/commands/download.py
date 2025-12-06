@@ -120,11 +120,11 @@ async def _message(bot: PinkMusicBot, message: Message, lp):
 
     user = await bot.db.user.get(message.from_user.id)
 
-    if user.credits <= 0 and not user.is_membership_active():
+    if user.credits <= 0 and not user.active_membership:
         await message.reply(lp("download_no_credits"))
         return
 
-    if not user.is_membership_active() and user.song_codec != SongCodec.AAC_LEGACY:
+    if not user.active_membership and user.song_codec != SongCodec.AAC_LEGACY:
         await message.reply(lp("download_songcodec_fallback"))
         user.song_codec = SongCodec.AAC_LEGACY
         await bot.db.user.update_song_codec(
@@ -259,7 +259,7 @@ async def _message(bot: PinkMusicBot, message: Message, lp):
                     )
 
                 else:
-                    if not user.is_membership_active():
+                    if not user.active_membership:
                         return lp("download_music_video_requires_membership")
 
                     return await bot.db.music_video.get(
@@ -296,14 +296,14 @@ async def _message(bot: PinkMusicBot, message: Message, lp):
         )
 
         for download_item in url_download_queue:
-            skip_credit_deduct = user.is_membership_active()
+            skip_credit_deduct = user.active_membership
             media_id = download_item.media_metadata["id"]
             media_title = download_item.media_metadata["attributes"]["name"]
 
             if await bot.is_under_maintenance(message):
                 return
 
-            if user.credits <= 0 and not user.is_membership_active():
+            if user.credits <= 0 and not user.active_membership:
                 await message.reply(lp("download_no_credits"))
                 return
 
@@ -420,7 +420,7 @@ async def _message(bot: PinkMusicBot, message: Message, lp):
                     download_item,
                     user.song_codec != SongCodec.AAC_LEGACY
                     and download_item.media_metadata["type"] in SONG_MEDIA_TYPE,
-                    user.is_membership_active(),
+                    user.active_membership,
                 )
 
                 if download_item.cover_url_template:
@@ -462,7 +462,7 @@ async def _message(bot: PinkMusicBot, message: Message, lp):
 
                     message_song = await enqueue_upload_audio(
                         bot,
-                        user.is_membership_active(),
+                        user.active_membership,
                         chat_id=bot.song_cache_chat_id,
                         audio=audio_bytes,
                         thumb=cover_bytes_telegram,
@@ -478,7 +478,7 @@ async def _message(bot: PinkMusicBot, message: Message, lp):
                     if caption_lyrics:
                         message_lyrics = await enqueue_upload_document(
                             bot,
-                            user.is_membership_active(),
+                            user.active_membership,
                             chat_id=bot.song_cache_chat_id,
                             document=BytesIO(
                                 download_item.lyrics.synced.encode("utf-8")
@@ -550,7 +550,7 @@ async def _message(bot: PinkMusicBot, message: Message, lp):
 
                     message_music_video = await enqueue_upload_video(
                         bot,
-                        user.is_membership_active(),
+                        user.active_membership,
                         chat_id=bot.music_video_cache_chat_id,
                         video=video_bytes,
                         thumb=cover_bytes_telegram,

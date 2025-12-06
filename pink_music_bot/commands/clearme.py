@@ -15,7 +15,7 @@ async def message(bot: PinkMusicBot, message: Message):
     if user is None:
         await message.reply(lp("clearme_fail"))
         return
-    if user.is_membership_active():
+    if user.active_membership:
         await message.reply(lp("clearme_paid"))
         return
     if user.credits != bot.free_daily_credits:

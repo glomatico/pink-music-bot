@@ -34,7 +34,7 @@ async def message(bot: PinkMusicBot, message: Message):
         )
         return
 
-    if not user.is_membership_active():
+    if not user.active_membership:
         await message.reply(
             lp("revokemembership_user_no_active_membership").format(user_id=user.id)
         )

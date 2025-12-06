@@ -33,7 +33,7 @@ async def message(bot: PinkMusicBot, message: Message):
     await bot.ensure_user_exists(message)
     lp = bot.get_lp(message)
     user = await bot.db.user.get(message.from_user.id)
-    if not user.is_membership_active():
+    if not user.active_membership:
         await message.reply(lp("songcodec_membership_required"))
         return
 
